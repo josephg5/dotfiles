@@ -1,121 +1,184 @@
 <?xml version="1.0"?>
 <!-- http://joewing.net/projects/jwm/config-2.1.shtml -->
-<JWM>
-<Tray autohide="false" x="0" y="+1" height="20" border="0" halign="center" valign="top">
-	<TrayButton label="jwm" popup="">root:1</TrayButton>
-	<TrayButton label="_" popup="show desktop">showdesktop</TrayButton>
-	<Pager labeled="true"/>
-	<TaskList maxwidth="256"/>
-	<Swallow name="xload" width="64">
-		xload -hl yellow -jumpscroll 1 -nolabel -update 1 -bg black -fg gray70
-	</Swallow>
-	<Swallow name="wmnet" width="64">
-		wmnet -t yellow -r gray70 -x 10000000 -l -d 1000000 -W wlan0
-	</Swallow>
-	<Dock/>
-	<Clock format="%R">gsimplecal</Clock>
+<jwm>
+<rootmenu>
+<program label="eMail">sylpheed</Program>
+<menu label="Web">
+<program label="Private window">iceweasel -private</Program>
+<program label="Normal window">iceweasel</Program>
+</Menu>
+<program label="Terminal">lxterminal -e tmuxj</Program>
+<program label="Editor">leafpad</Program>
+<Separator/>
+<menu label="Favourites">
+<program label="ssh vbox">lxterminal -e plink -v -ssh localhost</Program>
+<program label="virtualbox">virtualbox</Program>
+<program label="transmission">transmission-qt</Program>
+<program label="xcalc">xcalc</Program>
+<program label="skype">skype --disable-api</Program>
+<program label="sigil">sigil</Program>
+</Menu>
+<include>/etc/jwm/debian-menu</Include>
+<Separator/>
+<menu label="System">
+<program label=".profile">leafpad ~/.profile</Program>
+<program label=".xinitrc">leafpad ~/.xinitrc</Program>
+<program label="lxappearance">lxappearance</Program>
+<program label="reboot">sudo shutdown -r -t5 now</Program>
+<program label="halt">sudo shutdown -h -t5 now</Program>
+</Menu>
+<menu label="JWM">
+<program label=".jwmrc">leafpad ~/.jwmrc</Program>
+<Restart/>
+<Exit/>
+</Menu>
+</RootMenu>
+
+<tray autohide="false" x="0" y="+1" height="18" border="0" valign="top">
+<traybutton label="jwm" popup="">root:1</TrayButton>
+<traybutton label="_" popup="show desktop">showdesktop</TrayButton>
+<pager labeled="true"/>
+<tasklist maxwidth="256"/>
+<swallow name="xload" width="64">
+xload -nolabel -bg black -fg gray70 -hl yellow
+</Swallow>
+<Dock/>
+<clock format="%R">gsimplecal</Clock>
 </Tray>
 
-<!--	
-<Tray autohide="true" x="0" y="-1" width="0" height="36" halign="center" valign="bottom">
-	<TrayButton icon="/usr/share/icons/hicolor/22x22/apps/midori.png" popup="midori">exec:midori</TrayButton>
-	<TrayButton icon="/usr/share/midori/res/nojs/nojs-statusicon-denied.png" popup="midori -p">exec:midori -p</TrayButton>
-	<TaskList maxwidth="36"/>
-</Tray>
--->
-
-<Group>
-	<Class>Conky</Class>
-	<Option>noborder</Option>
-	<Option>nofocus</Option>
-	<Option>nolist</Option>
-	<Option>notitle</Option>
-	<Option>sticky</Option>
+<group>
+<class>Conky</Class>
+<option>noborder</Option>
+<option>nofocus</Option>
+<option>nolist</Option>
+<option>notitle</Option>
+<option>sticky</Option>
 </Group>
 
-<Group>
-	<Class>Lxterminal</Class>
-	<Option>opacity:0.0</Option>
-	<Option>pignore</Option>
-	<Option>maximized</Option>
+<group>
+<class>Lxterminal</Class>
+<option>opacity:0.0</Option>
+<option>pignore</Option>
 </Group>
 
-<!--
-<Group>
-	<Class>Iceweasel</Class>
-	<Option>maximized</Option>
-	<Option>notitle</Option>
-</Group>
--->
-
-<Group>
-	<Class>Sylpheed</Class>
-	<Option>maximized</Option>
+<group>
+<class>Iceweasel</Class>
+<option>maximized</Option>
+<option>notitle</Option>
 </Group>
 
-<WindowStyle>
-	<Font>Sans-8</Font>
-	<Width>2</Width>
-	<Active>
-		<Text>gray80</Text>
-		<Title>black:gray20</Title>
-		<Outline>gray20</Outline>
-	</Active>
-	<Inactive>
-		<Text>gray50</Text>
-		<Title>black:gray10</Title>
-		<Outline>gray10</Outline>
-	</Inactive>
-	</WindowStyle>
+<group>
+<class>Sylpheed</Class>
+<option>maximized</Option>
+</Group>
 
-<TrayStyle>
-	<Font>Sans-9</Font>
-	<Background>black</Background>
-	<Foreground>gray80</Foreground>
-	<Opacity>0.1</Opacity>
+<windowstyle>
+<font>Sans-8</Font>
+<width>1</Width>
+<active>
+<text>gray80</Text>
+<title>black:gray20</Title>
+<outline>gray20</Outline>
+</Active>
+<inactive>
+<text>gray50</Text>
+<title>black:gray10</Title>
+<outline>gray10</Outline>
+</Inactive>
+</WindowStyle>
+
+<traystyle>
+<font>Sans-10</Font>
+<background>black</Background>
+<foreground>gray80</Foreground>
+<opacity>0.1</Opacity>
 </TrayStyle>
 
-<ClockStyle>
+<clockstyle>
 </ClockStyle>
 
-<TaskListStyle>
-	<Foreground>gray70</Foreground>
-	<Background>black</Background>
-	<ActiveForeground>grey80</ActiveForeground>
-	<ActiveBackground>gray20</ActiveBackground>
+<taskliststyle>
+<foreground>gray70</Foreground>
+<background>black</Background>
+<activeforeground>grey80</ActiveForeground>
+<activebackground>gray20</ActiveBackground>
 </TaskListStyle>
 
-<PagerStyle>
-	<Outline>none</Outline>
-	<Foreground>gray20</Foreground>
-	<Background>gray10</Background>
-	<ActiveForeground>gray30</ActiveForeground>
-	<ActiveBackground>black</ActiveBackground>
-	<Text>gray50</Text>
+<pagerstyle>
+<outline>none</Outline>
+<foreground>gray20</Foreground>
+<background>gray10</Background>
+<activeforeground>gray30</ActiveForeground>
+<activebackground>black</ActiveBackground>
+<text>gray50</Text>
 </PagerStyle>
 
-<MenuStyle>
-	<Font>Sans-9</Font>
-	<Foreground>gray80</Foreground>
-	<Background>gray10</Background>
-	<ActiveForeground>black</ActiveForeground>
-	<ActiveBackground>gray70:gray50</ActiveBackground>
+<menustyle>
+<font>Sans-9</Font>
+<foreground>gray80</Foreground>
+<background>gray10</Background>
+<activeforeground>black</ActiveForeground>
+<activebackground>gray70:gray50</ActiveBackground>
 </MenuStyle>
 
-<PopupStyle>
-	<Font>Sans-8</Font>
-	<Outline>gray20</Outline>
-	<Foreground>yellow</Foreground>
-	<Background>black</Background>
+<popupstyle>
+<font>Sans-8</Font>
+<outline>gray20</Outline>
+<foreground>yellow</Foreground>
+<background>black</Background>
 </PopupStyle>
 
-<Desktops width="2" height="1">
+<desktops width="2" height="1">
 </Desktops>
 
-<!--
-<RestartCommand>if jwm -p; then jwm -restart; fi</RestartCommand>
--->
+<key key="Up">up</Key>
+<key key="Down">down</Key>
+<key key="Right">right</Key>
+<key key="Left">left</Key>
+<key key="h">left</Key>
+<key key="j">down</Key>
+<key key="k">up</Key>
+<key key="l">right</Key>
+<key key="Return">select</Key>
+<key key="Escape">escape</Key>
 
-<Include>$HOME/.config/jwm/jwmrc-menu</Include>
-<Include>$HOME/.config/jwm/jwmrc-key</Include>
+<key mask="A" key="F4">close</Key>
+<key mask="4" key="F11">maximize</Key>
+
+<key mask="4" key="#">desktop#</Key>
+<key mask="4" key="d">showdesktop</Key>
+<key mask="4" key="Tab">next</Key>
+<key mask="4S" key="Tab">prev</Key>
+<key mask="A" key="Tab">nextstacked</Key>
+<key mask="AS" key="Tab">prevstacked</Key>
+
+<key mask="4" key="Menu">root:1</Key>
+<key mask="4" key="space">root:1</Key>
+<key mask="A" key="space">window</Key>
+
+<key mask="4" key="V">exec:lxterminal -e alsamixer</Key>
+<key mask="4" key="0">exec:amixer set Master 0</Key>
+<key mask="4" key="Up">exec:amixer set Master 5%+</Key>
+<key mask="4" key="Down">exec:amixer set Master 5%-</Key>
+
+<key mask="A" key="F2">exec:gmrun</Key>
+<key mask="A" key="F3">exec:dmenu_run -i -nb black -nf gray</Key>
+<key mask="4S" key="K">exec:xkill</Key>
+<key mask="4" key="h">exec:lxterminal -e htop</Key>
+
+<key mask="4" key="w">exec:firefox</Key>
+<key mask="4S" key="W">exec:firefox -private-window</Key>
+<key mask="4S" key="M">exec:sylpheed</Key>
+<key mask="4" key="t">exec:lxterminal -e bash</Key>
+<key mask="4S" key="T">exec:lxterminal -e tmuxj</Key>
+<key mask="4" key="f">exec:thunar</Key>
+<key mask="4" key="e">exec:geany</Key>
+<key mask="4S" key="E">exec:leafpad</Key>
+<key mask="4S" key="V">exec:lxterminal -e alsamixer</Key>
+
+<key mask="4" key="r">exec:jwm -restart</Key>
+<key mask="4" key="x">exec:jwm -exit</Key>
+
+<key mask="4CS" key="R">exec:sudo shutdown -r -t 5 now</Key>
+<key mask="4CS" key="X">exec:sudo shutdown -h -t 5 now</Key>
 </JWM>
