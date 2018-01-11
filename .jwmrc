@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!-- http://joewing.net/projects/jwm/config-2.1.shtml -->
+<JWM>
+<Tray autohide="false" x="0" y="+1" height="20" border="0" halign="center" valign="top">
+	<TrayButton label="jwm" popup="">root:1</TrayButton>
+	<TrayButton label="_" popup="show desktop">showdesktop</TrayButton>
+	<Pager labeled="true"/>
+	<TaskList maxwidth="256"/>
+	<Swallow name="xload" width="64">
+		xload -hl yellow -jumpscroll 1 -nolabel -update 1 -bg black -fg gray70
+	</Swallow>
+	<Swallow name="wmnet" width="64">
+		wmnet -t yellow -r gray70 -x 10000000 -l -d 1000000 -W wlan0
+	</Swallow>
+	<Dock/>
+	<Clock format="%R">gsimplecal</Clock>
+</Tray>
+
+<!--	
+<Tray autohide="true" x="0" y="-1" width="0" height="36" halign="center" valign="bottom">
+	<TrayButton icon="/usr/share/icons/hicolor/22x22/apps/midori.png" popup="midori">exec:midori</TrayButton>
+	<TrayButton icon="/usr/share/midori/res/nojs/nojs-statusicon-denied.png" popup="midori -p">exec:midori -p</TrayButton>
+	<TaskList maxwidth="36"/>
+</Tray>
+-->
+
+<Group>
+	<Class>Conky</Class>
+	<Option>noborder</Option>
+	<Option>nofocus</Option>
+	<Option>nolist</Option>
+	<Option>notitle</Option>
+	<Option>sticky</Option>
+</Group>
+
+<Group>
+	<Class>Lxterminal</Class>
+	<Option>opacity:0.0</Option>
+	<Option>pignore</Option>
+	<Option>maximized</Option>
+</Group>
+
+<!--
+<Group>
+	<Class>Iceweasel</Class>
+	<Option>maximized</Option>
+	<Option>notitle</Option>
+</Group>
+-->
+
+<Group>
+	<Class>Sylpheed</Class>
+	<Option>maximized</Option>
+</Group>
+
+<WindowStyle>
+	<Font>Sans-8</Font>
+	<Width>2</Width>
+	<Active>
+		<Text>gray80</Text>
+		<Title>black:gray20</Title>
+		<Outline>gray20</Outline>
+	</Active>
+	<Inactive>
+		<Text>gray50</Text>
+		<Title>black:gray10</Title>
+		<Outline>gray10</Outline>
+	</Inactive>
+	</WindowStyle>
+
+<TrayStyle>
+	<Font>Sans-9</Font>
+	<Background>black</Background>
+	<Foreground>gray80</Foreground>
+	<Opacity>0.1</Opacity>
+</TrayStyle>
+
+<ClockStyle>
+</ClockStyle>
+
+<TaskListStyle>
+	<Foreground>gray70</Foreground>
+	<Background>black</Background>
+	<ActiveForeground>grey80</ActiveForeground>
+	<ActiveBackground>gray20</ActiveBackground>
+</TaskListStyle>
+
+<PagerStyle>
+	<Outline>none</Outline>
+	<Foreground>gray20</Foreground>
+	<Background>gray10</Background>
+	<ActiveForeground>gray30</ActiveForeground>
+	<ActiveBackground>black</ActiveBackground>
+	<Text>gray50</Text>
+</PagerStyle>
+
+<MenuStyle>
+	<Font>Sans-9</Font>
+	<Foreground>gray80</Foreground>
+	<Background>gray10</Background>
+	<ActiveForeground>black</ActiveForeground>
+	<ActiveBackground>gray70:gray50</ActiveBackground>
+</MenuStyle>
+
+<PopupStyle>
+	<Font>Sans-8</Font>
+	<Outline>gray20</Outline>
+	<Foreground>yellow</Foreground>
+	<Background>black</Background>
+</PopupStyle>
+
+<Desktops width="2" height="1">
+</Desktops>
+
+<!--
+<RestartCommand>if jwm -p; then jwm -restart; fi</RestartCommand>
+-->
+
+<Include>$HOME/.config/jwm/jwmrc-menu</Include>
+<Include>$HOME/.config/jwm/jwmrc-key</Include>
+</JWM>
